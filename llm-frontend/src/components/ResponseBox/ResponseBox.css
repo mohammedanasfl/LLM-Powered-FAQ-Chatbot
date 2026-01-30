@@ -1,0 +1,127 @@
+.response-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.response-box__empty {
+    display: none;
+    /* Hidden since we show welcome in ChatPage */
+}
+
+/* Message styles */
+.message {
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    animation: fadeInUp var(--transition-normal);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message--user {
+    background-color: var(--bg-secondary);
+    border-left: 3px solid var(--blue-accent);
+}
+
+.message--assistant {
+    background-color: var(--bg-tertiary);
+    border-left: 3px solid #10a37f;
+}
+
+.message__avatar {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-primary);
+    border-radius: 50%;
+}
+
+.message__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.message__role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+}
+
+.message--user .message__role {
+    color: var(--blue-accent);
+}
+
+.message--assistant .message__role {
+    color: #10a37f;
+}
+
+.message__text {
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-size: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Loading state */
+.message__loading {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.spinner-small {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color);
+    border-top-color: #10a37f;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error styling */
+.response-box__error {
+    padding: var(--spacing-md);
+    background-color: rgba(248, 81, 73, 0.1);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    border-radius: var(--radius-md);
+    color: #ff6b6b;
+    margin-top: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .message {
+        padding: var(--spacing-sm);
+    }
+
+    .message__avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+}
